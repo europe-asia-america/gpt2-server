@@ -2,3 +2,4 @@ requests==2.18.4
 websockets==8.1
 gpt_2_simple==0.7.1
 SimpleWebSocketServer==0.1.1
+tensorflow==1.15.2

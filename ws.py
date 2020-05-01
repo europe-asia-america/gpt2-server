@@ -10,6 +10,7 @@ if not os.path.isdir(os.path.join("models", model_name)):
 	gpt2.download_gpt2(model_name=model_name)   # model is saved into current directory under /models/124M/
 
 sess = gpt2.start_tf_sess()
+gpt2.load_gpt2(sess, model_name=model_name)
 
 def prompt_text(input: str) -> str:
     text = gpt2.generate(sess, prefix=input)
@@ -18,11 +19,16 @@ def prompt_text(input: str) -> str:
     text = ' '.join(text)
     return text
 
+print("hahahahahaha " + prompt_text("kawaii"))
+
 def prediction(string: str):
+    print("Prediction time")
+    ret = prompt_text(string)
+    print(ret)
     return {
         "message": {
             "prompt": string,
-            "text_0": prompt_text(string),
+            "text_0": ret,
             "text_1": "Today, I saw potato in the fields.",
             "text_2": "! Our crops are growing.",
             "text_3": "How will we drink coffee tomorrow?",
